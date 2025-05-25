@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Environnements virtuels
+env/
+venv/
+ENV/
+.venv/
+.Python
+
+# Fichiers de configuration d'IDE
+.idea/
+*.iml
+
+# Fichiers de logs
+*.log
+
+# Fichiers de tests
+htmlcov/
+.tox/
+.coverage
+.cache
+.pytest_cache/
+
+# Dépendances
+*.egg-info/
+dist/
+build/
+
+# Autres
+.DS_Store
+*.swp
