@@ -21,7 +21,7 @@ Chosen for simplicity and fast access times in a demo environment.
 ### API Design
 RESTful API with three main endpoints:
 - POST /shortener/shorten: Create shortened URLs
-- GET /{shortcode}: Redirect to original URL
+- GET /shortener/{shortcode}: Redirect to original URL
 - GET /shortener/stats/{shortcode}: Retrieve usage statistics
 
 ## Key Components
@@ -44,7 +44,6 @@ RESTful API with three main endpoints:
 - Simple vs. Complex short codes: Opted for longer but guaranteed unique codes
 
 ### Assumptions
-- URLs are valid and accessible
 - Service runs on a single instance
 - Memory is sufficient for storage
 - Short codes are case-sensitive
@@ -56,7 +55,6 @@ RESTful API with three main endpoints:
 - Efficient duplicate URL detection
 
 ## Security Considerations
-- Input validation for URLs
 - Rate limiting could be added
 - Hashids salt for unpredictable codes
 
@@ -64,11 +62,10 @@ RESTful API with three main endpoints:
 If I had more time, I would:
 1. Add persistent storage (Redis/PostgreSQL)
 2. Implement rate limiting
-3. Add URL validation
-4. Create a simple frontend
-5. Add monitoring and logging
-6. Implement user authentication
-7. Add more tests cases for edge scenarios
+3. Create a simple frontend
+4. Add monitoring and logging
+5. Implement user authentication
+6. Add more tests cases for edge scenarios
 
 ## Challenges Faced
 - Ensuring unique codes while handling duplicates
@@ -77,7 +74,7 @@ If I had more time, I would:
 
 ## Time Breakdown
 - Setup and planning: 20 minutes
-- Core implementation: 45 minutes
-- Testing: 30 minutes
+- Core implementation: 1 hour 30 minutes
+- Testing: 40 minutes
 - Documentation: 25 minutes
-- Total: ~2 hours
+- Total: ~3 hours
