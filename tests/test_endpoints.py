@@ -88,4 +88,4 @@ def test_shorten_invalid_url(client):
     assert response.status_code == 400
     data = response.get_json()
     print(data)
-    assert data['message'] == "URL invalide"
+    assert data['message'] == "URL invalid"

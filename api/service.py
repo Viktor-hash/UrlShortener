@@ -22,7 +22,7 @@ class URLService:
     def create_short_url(self, original_url: str, host_url: str) -> dict:
         if not self.is_valid_url(original_url):
             return {
-                "error": "URL invalide",
+                "error": "URL invalid",
                 "already_exists": False
             }
         if original_url in self.url_to_code:

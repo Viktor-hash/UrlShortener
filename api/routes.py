@@ -18,12 +18,11 @@ class URLShortener(Resource):
             description='Create a shortened URL',
             responses={
                 201: 'URL shortened successfully',
-                200: 'URL already exists'
+                200: 'URL already existing',
+                400: 'URL invalid'
             })
+    @ns.response(400, 'URL invalid', error_model)
     @ns.expect(url_model)
-    @ns.response(201, 'URL shortened successfuly', shortened_url_model)
-    @ns.response(200, 'URL already existing', shortened_url_model)
-    @ns.response(400, 'URL invalide', error_model)
     def post(self) -> tuple[dict, int]:
         data: dict = request.json
         result = url_service.create_short_url(data.get('url'), request.host_url)
@@ -41,10 +40,12 @@ class URLStats(Resource):
                 200: 'Statistics retrieved successfully',
                 404: 'Short code not found'
             })
+    @ns.response(200,'Statistics retrieved successfully' ,stats_model)
+    @ns.response(404, 'Stats not found', error_model)
     def get(self, short_code: str) -> tuple[Dict, int]:
         stats = url_service.get_stats(short_code)
         if stats:
-            return ns.marshal(stats, stats_model), 200
+            return stats.to_dict(), 200
         return {"message": "Short code not found"}, 404
 
 @ns.route('/<short_code>')
@@ -55,6 +56,8 @@ class URLRedirect(Resource):
                 302: 'Redirect to original URL',
                 404: 'Short code not found'
             })
+    @ns.response(404, 'Short code not found', error_model)
+    @ns.response(302, 'Redirect successful')
     def get(self, short_code: str) -> Union[Response, tuple[Dict, int]]:
         target_url = url_service.increment_visits(short_code)
         if target_url:
