@@ -69,8 +69,9 @@ If I had more time, I would:
 
 ## Challenges Faced
 - Ensuring unique codes while handling duplicates
-- Balancing code length with collision probability
+- Handling URL validation and edge cases
 - Designing clean test cases
+- Designing api responses
 
 ## Time Breakdown
 - Setup and planning: 20 minutes
